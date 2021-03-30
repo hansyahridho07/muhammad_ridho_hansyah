@@ -52,7 +52,7 @@ class UserController {
   static async findUserId(req, res, next) {
     try {
       const id = String(req.params.id);
-      const account = await Users.findId(id);
+      const account = await Users.findOne(id);
       if (!account) {
         throw { name: "customError", status: 404, message: "Dat not found" };
       }
