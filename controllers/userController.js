@@ -49,6 +49,19 @@ class UserController {
     } catch (error) {}
   }
 
+  static async findUserId(req, res, next) {
+    try {
+      const id = String(req.params.id);
+      const account = await Users.findId(id);
+      if (!account) {
+        throw { name: "customError", status: 404, message: "Dat not found" };
+      }
+      res.status(200).json({ account });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async findUserAccountNumber(req, res, next) {
     try {
       const id = String(req.params.account);

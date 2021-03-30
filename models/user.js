@@ -24,6 +24,12 @@ class Users {
     return getDatabase().collection("Users").findOne({ identityNumber });
   }
 
+  static findId(id) {
+    return getDatabase()
+      .collection("Users")
+      .findOne({ _id: ObjectID(id) });
+  }
+
   // static findEmail(email) {
   //   return getDatabase().collection("Users").findOne({ email });
   // }
